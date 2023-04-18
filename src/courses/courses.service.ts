@@ -14,7 +14,6 @@ export class CoursesService {
     const course = this.mockData.filter((singleData) => {
       if (singleData.id === id) return singleData;
     });
-    // const otherWay = this.mockData.find((course) => course.id === id);
     return new Promise((resolve) => {
       if (!course) throw new HttpException('Course does not exist', 404);
       resolve(course);
