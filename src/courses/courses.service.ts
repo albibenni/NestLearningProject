@@ -9,7 +9,7 @@ export class CoursesService {
     return Promise.resolve(this.mockData);
   }
 
-  getCourse(courseId): Promise<any> {
+  getCourseById(courseId): Promise<any> {
     const id = Number(courseId);
     const course = this.mockData.filter((singleData) => {
       if (singleData.id === id) return singleData;
