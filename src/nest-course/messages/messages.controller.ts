@@ -1,19 +1,20 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { MessagesService } from './messages.service';
+import { CreateMessageDto } from './dtos/create-message.dto';
 
 @Controller('messages')
 export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
-  @Get('')
+  @Get()
   listMessages() {
     this.messagesService.listMessages();
   }
-  @Post('')
-  createMessage(@Body() body: any) {
+  @Post()
+  createMessage(@Body() body: CreateMessageDto) {
     this.messagesService.createMessage(body);
   }
 
-  @Delete('')
+  @Delete()
   deleteMessage() {
     this.messagesService.deleteMessage();
   }
