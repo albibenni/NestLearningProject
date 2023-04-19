@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { MessagesRepository } from './messages.repository';
 
 @Injectable()
 export class MessagesService {
+  constructor(private readonly messagesRepository: MessagesRepository) {}
   listMessages() {
-    /* TODO document why this method 'listMessages' is empty */
+    return this.messagesRepository.findAll();
   }
 
   deleteMessage() {
@@ -11,10 +13,10 @@ export class MessagesService {
   }
 
   getMessage(id) {
-    /* TODO document why this method 'getMessage' is empty */
+    return this.messagesRepository.findOne(id);
   }
 
   createMessage(body: any) {
-    /* TODO document why this method 'createMessage' is empty */
+    return this.messagesRepository.create(body);
   }
 }
