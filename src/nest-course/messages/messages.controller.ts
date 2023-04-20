@@ -20,7 +20,10 @@ export class MessagesController {
   @Post()
   createMessage(@Body() body: CreateMessageDto) {
     const message = this.messagesService.createMessage(body);
-    return message;
+    if (message) {
+      return message;
+    }
+    throw new NotFoundException('Message not found');
   }
 
   @Delete()
