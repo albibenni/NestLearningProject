@@ -10,13 +10,14 @@ import { UsersModule } from './myCV/users/users.module';
 import { ReportsModule } from './myCV/reports/reports.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './myCV/users/user.entity';
+import { Report } from './myCV/reports/report.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [User], // our entities
+      entities: [User, Report], // our entities
       synchronize: true,
     }),
     CoursesModule,
