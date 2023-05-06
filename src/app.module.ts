@@ -9,13 +9,14 @@ import { Folder2Controller } from './folder1/folder2.controller';
 import { UsersModule } from './myCV/users/users.module';
 import { ReportsModule } from './myCV/reports/reports.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './myCV/users/user.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [], // our entities
+      entities: [User], // our entities
       synchronize: true,
     }),
     CoursesModule,
