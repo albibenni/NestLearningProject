@@ -7,11 +7,12 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class UsersService {
   constructor(@InjectRepository(User) private repo: Repository<User>) {}
+
   async createUser(createUser: CreateUserDto) {
     const email = createUser.email;
     const password = createUser.password;
     const user = this.repo.create({ email, password });
-    return Promise.resolve(user);
+    return Promise.resolve(this.repo.save(user));
   }
 
   async deleteUser(userId: any) {
