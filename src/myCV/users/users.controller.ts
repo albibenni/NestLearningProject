@@ -22,9 +22,9 @@ export class UsersController {
     return await this.usersService.getUserById(userId);
   }
 
-  @Post()
-  async createUser(@Body() createUser: CreateUserDto) {
-    return await this.usersService.createUser(createUser);
+  @Post('/signup')
+  async createUser(@Body() body: CreateUserDto) {
+    return await this.usersService.createUser(body);
   }
   @Delete()
   async deleteCourse(@Query() query: any) {

@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Body, Injectable, Post } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 
 @Injectable()
 export class UsersService {
   async createUser(createUser: CreateUserDto) {
-    return Promise.resolve(undefined);
+    return Promise.resolve(createUser);
   }
 
   async deleteUser(userId: any) {
