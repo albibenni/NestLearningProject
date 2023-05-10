@@ -19,8 +19,11 @@ export class UsersService {
     return Promise.resolve(undefined);
   }
 
-  async getUserById(userId: string) {
-    return Promise.resolve(undefined);
+  async getUserById(id: number) {
+    const user = await this.repo.findOne({
+      where: { id },
+    });
+    return Promise.resolve(user);
   }
 
   async getUsers() {

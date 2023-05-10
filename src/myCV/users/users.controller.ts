@@ -17,9 +17,9 @@ export class UsersController {
   async getUsers() {
     return await this.usersService.getUsers();
   }
-  @Get(':courseId')
-  async getCourseById(@Param('userId') userId: string) {
-    return await this.usersService.getUserById(userId);
+  @Get(':id')
+  async getCourseById(@Param('id') id: number) {
+    return await this.usersService.getUserById(id);
   }
 
   @Post('/signup')
