@@ -27,7 +27,8 @@ export class UsersService {
   }
 
   async getUsers() {
-    return Promise.resolve(undefined);
+    const users: User[] = await this.repo.find({});
+    return Promise.resolve(users);
   }
   async getUsersByEmail(email: string) {
     const users: User[] = await this.repo.find({
