@@ -29,4 +29,10 @@ export class UsersService {
   async getUsers() {
     return Promise.resolve(undefined);
   }
+  async getUsersByEmail(email: string) {
+    const users: User[] = await this.repo.find({
+      where: { email },
+    });
+    return Promise.resolve(users);
+  }
 }

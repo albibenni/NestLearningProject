@@ -18,8 +18,12 @@ export class UsersController {
     return await this.usersService.getUsers();
   }
   @Get(':id')
-  async getCourseById(@Param('id') id: number) {
+  async getUserById(@Param('id') id: number) {
     return await this.usersService.getUserById(id);
+  }
+  @Get(':email')
+  async getUsersByEmail(@Param('email') email: string) {
+    return await this.usersService.getUsersByEmail(email);
   }
 
   @Post('/signup')
