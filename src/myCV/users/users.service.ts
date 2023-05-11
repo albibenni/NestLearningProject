@@ -36,4 +36,12 @@ export class UsersService {
     });
     return Promise.resolve(users);
   }
+  async updateUser(id: number, attrs: Partial<User>) {
+    const user = await this.getUserById(id);
+    if (!user) {
+      throw new Error('user not found');
+    }
+    Object.assign(user, attrs);
+    return Promise.resolve(this.repo.save(user));
+  }
 }
