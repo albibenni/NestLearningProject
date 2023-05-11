@@ -14,11 +14,6 @@ export class UsersService {
     const user = this.repo.create({ email, password });
     return Promise.resolve(this.repo.save(user));
   }
-
-  async deleteUser(userId: any) {
-    return Promise.resolve(undefined);
-  }
-
   async getUserById(id: number) {
     const user = await this.repo.findOne({
       where: { id },
@@ -30,6 +25,7 @@ export class UsersService {
     const users: User[] = await this.repo.find({});
     return Promise.resolve(users);
   }
+
   async getUsersByEmail(email: string) {
     const users: User[] = await this.repo.find({
       where: { email },
@@ -43,5 +39,13 @@ export class UsersService {
     }
     Object.assign(user, attrs);
     return Promise.resolve(this.repo.save(user));
+  }
+
+  async deleteUser(id: any) {
+    const user = await this.getUserById(id);
+    if (!user) {
+      throw new Error('user not found');
+    }
+    return Promise.resolve(this.repo.remove(user));
   }
 }
