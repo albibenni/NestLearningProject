@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Post,
   Put,
@@ -35,7 +36,11 @@ export class UsersController {
 
   @Put(':id')
   async updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
-    return await this.usersService.updateUser(parseInt(id), body);
+    const user = await this.usersService.updateUser(parseInt(id), body);
+    if (!user) {
+      throw new NotFoundException('user not found');
+    }
+    return user;
   }
   @Delete(':id')
   async deleteCourse(@Param('id') id: string) {
