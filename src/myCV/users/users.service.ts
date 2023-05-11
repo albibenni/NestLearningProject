@@ -21,7 +21,7 @@ export class UsersService {
     return Promise.resolve(user);
   }
 
-  async getUsers() {
+  async getAllUsers() {
     const users: User[] = await this.repo.find({});
     return Promise.resolve(users);
   }
