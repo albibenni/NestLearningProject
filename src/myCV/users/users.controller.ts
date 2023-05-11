@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dtos/create-user.dto';
+import { UpdateUserDto } from './dtos/update-user.dto';
 
 @Controller('auth')
 export class UsersController {
@@ -33,8 +34,8 @@ export class UsersController {
   }
 
   @Put(':id')
-  async updateUser(@Param('id') id: number, @Body() body: CreateUserDto) {
-    return await this.usersService.updateUser(id, body);
+  async updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
+    return await this.usersService.updateUser(parseInt(id), body);
   }
   @Delete(':id')
   async deleteCourse(@Param('id') id: string) {
