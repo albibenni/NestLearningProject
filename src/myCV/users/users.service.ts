@@ -41,7 +41,7 @@ export class UsersService {
     return Promise.resolve(this.repo.save(user));
   }
 
-  async deleteUser(id: any) {
+  async deleteUser(id: number) {
     const user = await this.getUserById(id);
     if (!user) {
       throw new Error('user not found');

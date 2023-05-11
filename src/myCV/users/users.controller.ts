@@ -37,7 +37,7 @@ export class UsersController {
     return await this.usersService.updateUser(id, body);
   }
   @Delete(':id')
-  async deleteCourse(@Param() id: string) {
+  async deleteCourse(@Param('id') id: string) {
     return await this.usersService.deleteUser(parseInt(id));
   }
 }
