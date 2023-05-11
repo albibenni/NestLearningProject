@@ -26,7 +26,11 @@ export class UsersController {
   }
   @Get(':id')
   async getUserById(@Param('id') id: string) {
-    return await this.usersService.getUserById(parseInt(id));
+    const user = await this.usersService.getUserById(parseInt(id));
+    if (!user) {
+      throw new NotFoundException('user not found');
+    }
+    return user;
   }
 
   @Get('/users')
@@ -36,11 +40,7 @@ export class UsersController {
 
   @Put(':id')
   async updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
-    const user = await this.usersService.updateUser(parseInt(id), body);
-    if (!user) {
-      throw new NotFoundException('user not found');
-    }
-    return user;
+    return await this.usersService.updateUser(parseInt(id), body);
   }
   @Delete(':id')
   async deleteCourse(@Param('id') id: string) {
