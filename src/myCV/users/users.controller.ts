@@ -14,6 +14,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
+import { SerializeInterceptor } from '../interceptors/serialize.interceptor';
 
 @Controller('auth')
 export class UsersController {
@@ -26,9 +27,11 @@ export class UsersController {
   async getAllUsers() {
     return await this.usersService.getAllUsers();
   }
-  @UseInterceptors(ClassSerializerInterceptor)
+
+  @UseInterceptors(SerializeInterceptor)
   @Get(':id')
   async getUserById(@Param('id') id: string) {
+    console.log('handler is running');
     const user = await this.usersService.getUserById(parseInt(id));
     if (!user) {
       throw new NotFoundException('user not found');
