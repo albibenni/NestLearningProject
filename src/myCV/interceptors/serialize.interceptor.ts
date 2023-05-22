@@ -20,7 +20,7 @@ export class SerializeInterceptor implements NestInterceptor {
   }
 }
 
-// export function Serilize<T>(dto: ClassConstructor<T>) {
+// export function Serialize<T>(dto: ClassConstructor<T>) {
 //   return UseInterceptors(new SerializeInterceptor(dto));
 // }
 //
